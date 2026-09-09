@@ -9,10 +9,10 @@ public class CameraTracking : MonoBehaviour
     private InputSystem_Actions inputActions;
     [SerializeField] private Transform playerTransform;
 
-    [SerializeField] private float smoothTime;
-    [SerializeField] private float mouseSensitivity;
+    [SerializeField] private float smoothTime = 0;
+    [SerializeField] private float mouseSensitivity = 0.1f;
     [SerializeField] private float gamepadSensitivity = 100f;
-    [SerializeField] private float maxViewRange;
+    [SerializeField] private float maxViewRange = 90;
     private float mouseX, mouseY;
     [SerializeField] private bool isGamePad;
 
@@ -27,18 +27,23 @@ public class CameraTracking : MonoBehaviour
     void OnEnable()
     {
         inputActions.Enable();
+
+        inputActions.Player.Look.performed += CheckDeviceType;
+        inputActions.Player.Look.canceled += CheckDeviceType;
     }
     void OnDisable()
     {
+        inputActions.Player.Look.performed -= CheckDeviceType;
+        inputActions.Player.Look.canceled -= CheckDeviceType;
+
         inputActions.Disable();
     }
 
-    private void OnLook(InputAction.CallbackContext ctx)
+    private void CheckDeviceType(InputAction.CallbackContext ctx)
     {
-        lookInput = ctx.ReadValue<Vector2>();
-
         isGamePad = ctx.control.device is Gamepad;
     }
+
 
     private void FixedUpdate()
     {
@@ -46,7 +51,6 @@ public class CameraTracking : MonoBehaviour
     }
     private void Update()
     {
-
         CameraRotation();
     }
 

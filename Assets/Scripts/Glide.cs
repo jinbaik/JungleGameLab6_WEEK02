@@ -4,14 +4,14 @@ public class Glide : MonoBehaviour
 {
 
     [SerializeField] private float baseSpeed = 30f;
-    [SerializeField] private float maxThrustSpeed;
-    [SerializeField] private float minThrustSpeed;
-    [SerializeField] private float thrustFactor;
-    [SerializeField] private float dragFactor;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float tiltStrength;
+    [SerializeField] private float maxThrustSpeed = 300f;
+    [SerializeField] private float minThrustSpeed = 3f;
+    [SerializeField] private float thrustFactor = 50f;
+    [SerializeField] private float dragFactor = 1;
+    [SerializeField] private float rotationSpeed = 5;
+    [SerializeField] private float tiltStrength = 100;
     [SerializeField] private float maxTiltAngle = 60;
-    [SerializeField] private float tiltSpeed;
+    [SerializeField] private float tiltSpeed = 5;
     [SerializeField] private float lowPercent = 0.1f;
     [SerializeField] private float highPercent = 1;
     [SerializeField] private float turnDragPenalty = 15f;
