@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerSnowBall
   - SnowCube
+  - Terrain
   layers:
   - Default
   - TransparentFX
